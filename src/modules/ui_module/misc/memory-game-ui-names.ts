@@ -13,4 +13,5 @@ export class MemoryGameUiNames {
 	public static readonly EASY_LEVEL: string = 'memory-game-easy-level';
 	public static readonly NORMAL_LEVEL: string = 'memory-game-normal-level';
 	public static readonly HARD_LEVEL: string = 'memory-game-hard-level';
+	public static readonly BACKGROUND_COLOR: string = 'lightBlue';
 }

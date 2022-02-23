@@ -16,15 +16,17 @@ import { MemoryGameUiNames } from '../../ui_module/misc/memory-game-ui-names';
 
 export class MemoryGameGameView {
 	protected level: string;
-	protected _canvas: HTMLCanvasElement;
+	protected canvas: HTMLCanvasElement;
 	protected ctx: CanvasRenderingContext2D;
 	protected poolOfCards: MemoryGameOneCard[] = [];
 	protected poolOfImagesName: string[];
 	protected columns: number;
 	protected rows: number;
 
-	constructor(level: string) {
+	constructor(level: string, canvas: HTMLCanvasElement) {
 		this.level = level;
+		this.canvas = canvas;
+		this.ctx = this.canvas.getContext('2d');
 
 		if (this.level === MemoryGameUiNames.EASY_LEVEL) {
 			this.columns = 4;
@@ -39,25 +41,16 @@ export class MemoryGameGameView {
 			this.rows = 6;
 		}
 
-		this._canvas = document.createElement('canvas') as HTMLCanvasElement;
-		this.ctx = this.canvas.getContext('2d');
-		this._canvas.textContent = 'Sorry, game not work :(';
-		this._canvas.setAttribute('width', `${window.screen.width}`);
-		this._canvas.setAttribute('height', `${window.screen.height}`);
-		this._canvas.setAttribute('id', 'canvas');
-		document.body.innerHTML = '';
-		document.body.appendChild(this.canvas);
-
 		const imagePool: MemoryGameGetImagesPool = new MemoryGameGetImagesPool(level);
 		this.poolOfImagesName = imagePool.getRandomPool();
 		_.each(this.poolOfImagesName, (imageName) => {
 			this.poolOfCards.push(new MemoryGameOneCard(imageName, level));
 		});
 	}
-	public get canvas(): HTMLCanvasElement {
-		return this._canvas;
-	}
+
 	public start(): void {
+		this.ctx.resetTransform();
+		this.ctx.clearRect(0, 0, window.screen.width, window.screen.height);
 		let index = 0;
 		for (let i = 0; i < this.columns; i++) {
 			for (let j = 0; j < this.rows; j++) {

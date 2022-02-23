@@ -60,7 +60,7 @@ export class MemoryGameOneCard {
 			this.ctx.setTransform(this.matrix);
 			this.ctx.globalCompositeOperation = MemoryGameGameNames.SOURCE_OVER;
 			roundedRect(this.ctx, 0, 0, this.width, this.height, 20);
-			this.ctx.globalCompositeOperation = MemoryGameGameNames.SOURSE_A_TOP;
+			this.ctx.globalCompositeOperation = MemoryGameGameNames.SOURCE_A_TOP;
 			this.ctx.drawImage(this.img, 0, 0, this.width, this.height);
 		});
 	}
@@ -108,7 +108,8 @@ export class MemoryGameOneCard {
 		this.ctx.setTransform(this.a, this.b, 0, this.d, this.e, this.f);
 		this.ctx.globalCompositeOperation = MemoryGameGameNames.SOURCE_OVER;
 		roundedRect(this.ctx, 0, 0, this.width, this.height, 20);
-		this.ctx.globalCompositeOperation = MemoryGameGameNames.SOURSE_A_TOP;
+		this.ctx.globalCompositeOperation = MemoryGameGameNames.SOURCE_A_TOP;
+
 		if (this.frontSide) {
 			this.img.src = this.imgSrc;
 		} else {

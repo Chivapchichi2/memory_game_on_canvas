@@ -9,9 +9,7 @@
  * Created by Pavlo Ivchenko on 18.02.2022
  */
 import './styles.scss';
-import { MemoryGameGameMediator } from './modules/game_module/mediator/memory-game-game-mediator';
-import { MemoryGameUiNames } from './modules/ui_module/misc/memory-game-ui-names';
 
-const game: MemoryGameGameMediator = new MemoryGameGameMediator(MemoryGameUiNames.EASY_LEVEL) as MemoryGameGameMediator;
-
-game.startGame();
+import { MemoryGameUiMediator } from './modules/ui_module/mediator/memory-game-ui-mediator';
+const ui = new MemoryGameUiMediator();
+ui.startGame();

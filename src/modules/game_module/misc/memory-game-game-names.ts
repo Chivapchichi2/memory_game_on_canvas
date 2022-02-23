@@ -12,5 +12,6 @@
 export class MemoryGameGameNames {
 	public static readonly TEXTURE: string = './assets/texture.jpg';
 	public static readonly SOURCE_OVER: string = 'source-over';
-	public static readonly SOURSE_A_TOP: string = 'source-atop';
+	public static readonly SOURCE_A_TOP: string = 'source-atop';
+	public static readonly OVERLAY: string = 'overlay';
 }
